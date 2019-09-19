@@ -19,4 +19,7 @@ class Button {
         this.button.setText(String.valueOf(c));
     }
 
+    public String getChar() {
+        return this.button.getText();
+    }
 }

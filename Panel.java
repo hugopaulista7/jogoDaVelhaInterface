@@ -1,6 +1,6 @@
 import javax.swing.JOptionPane;
 import javax.swing.JFrame;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 class Panel {
     private JFrame panel;
@@ -40,6 +40,7 @@ class Panel {
 
     private void setGrid() {
         // this.panel.setLayout(new GridLayout(3, 3));
+        this.panel.setLayout(new FlowLayout());
         this.panel.setDefaultLookAndFeelDecorated(true); 
         this.insertButtons();
     }

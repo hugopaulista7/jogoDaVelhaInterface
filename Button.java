@@ -22,4 +22,5 @@ class Button {
     public String getChar() {
         return this.button.getText();
     }
+
 }

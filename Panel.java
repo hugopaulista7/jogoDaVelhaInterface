@@ -45,14 +45,21 @@ class Panel {
         frame.setDefaultLookAndFeelDecorated(defaultLook);
     }
 
+    private void insertDisplay(Display display) {
+        this.displayPanel.add(display.get());
+    }
+
     private void setGrid() {
         this.setFrameGrid(this.mainPanel, 1, 2, true);
 
         this.setPanelGrid(this.buttonsPanel, 3, 3);
 
-        this.setPanelGrid(this.displayPanel, 4, 1);
+        this.setPanelGrid(this.displayPanel, 4, 2);
         
         this.insertButtons();
+        this.turnDisplay.setLabel("Turno: ");
+        this.insertDisplay(this.turnDisplay);
+        
         
         this.mainPanel.add(this.buttonsPanel);
         this.mainPanel.add(this.displayPanel);
@@ -82,5 +89,12 @@ class Panel {
         this.exitOperation();
         this.setGrid();
         this.show();
+    }
+
+    public void showPlayerNameOnDisplay(Player player) {
+        Display display = new Display();
+        display.setLabel(player.getName() + " | " + player.getSelectedChar());
+        System.out.println(display.getLabel());
+        this.insertDisplay(display);
     }
 }

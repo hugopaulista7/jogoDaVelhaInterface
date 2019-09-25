@@ -2,14 +2,17 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JFrame;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-class Panel {
+class Panel implements ActionListener {
     private JFrame mainPanel;
     private JPanel buttonsPanel;
     private JPanel displayPanel;
     private Button[] gameButtons = new Button[9];
     private Button newGameButton;
     private Display turnDisplay = new Display();
+
     Panel() {
     }
 
@@ -17,7 +20,7 @@ class Panel {
         return this.mainPanel;
     }
 
-    private void show() {
+    public void show() {
         this.mainPanel.setVisible(true);
     }
 
@@ -30,7 +33,7 @@ class Panel {
     }
 
     private void insertButtons() {
-        for(int i = 0; i < this.gameButtons.length; i++) {
+        for (int i = 0; i < this.gameButtons.length; i++) {
             this.buttonsPanel.add(this.gameButtons[i].get());
         }
         this.displayPanel.add(this.newGameButton.get());
@@ -55,12 +58,11 @@ class Panel {
         this.setPanelGrid(this.buttonsPanel, 3, 3);
 
         this.setPanelGrid(this.displayPanel, 4, 2);
-        
+
         this.insertButtons();
         this.turnDisplay.setLabel("Turno: ");
         this.insertDisplay(this.turnDisplay);
-        
-        
+
         this.mainPanel.add(this.buttonsPanel);
         this.mainPanel.add(this.displayPanel);
     }
@@ -77,9 +79,11 @@ class Panel {
             this.gameButtons[i].resize(50, 50);
             int aux = i + 1;
             this.gameButtons[i].setChar(String.valueOf(aux).charAt(0));
+            this.gameButtons[i].addEvent(this);
         }
         this.newGameButton = new Button();
         this.newGameButton.setString("Novo jogo");
+        this.newGameButton.addEvent(this);
     }
 
     public void initPanel(int width, int height) {
@@ -88,13 +92,18 @@ class Panel {
         this.resize(width, height);
         this.exitOperation();
         this.setGrid();
-        this.show();
+        // this.show();
     }
 
     public void showPlayerNameOnDisplay(Player player) {
         Display display = new Display();
         display.setLabel(player.getName() + " | " + player.getSelectedChar());
-        System.out.println(display.getLabel());
         this.insertDisplay(display);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // TODO Auto-generated method stub
+
     }
 }

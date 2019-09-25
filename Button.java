@@ -1,4 +1,5 @@
 import javax.swing.JButton;
+import java.awt.event.ActionListener;
 
 class Button {
     private JButton button;
@@ -27,4 +28,7 @@ class Button {
         this.button.setText(text);
     }
 
+    public void addEvent(ActionListener scope) {
+        this.button.addActionListener(scope);
+    }
 }

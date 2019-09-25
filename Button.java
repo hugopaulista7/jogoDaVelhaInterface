@@ -23,4 +23,8 @@ class Button {
         return this.button.getText();
     }
 
+    public void setString(String text) {
+        this.button.setText(text);
+    }
+
 }

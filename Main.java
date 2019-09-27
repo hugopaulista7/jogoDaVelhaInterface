@@ -39,25 +39,14 @@ class Main {
 
         panel.showPlayerNameOnDisplay(player1);
         panel.showPlayerNameOnDisplay(player2);
-
+        panel.setPlayers(player1, player2);
         panel.show();
 
         /**jogo iniciado */
-        int current = 0;
-        valid = false;
-        String message = " por favor selecione no tabuleiro a celula que deseja jogar";
-        while (!valid) {
-            if (current == 0) {
-                dialog.showMessageDialog(null, player1.getName() + message);
+        panel.setCurrentPlayer(player1);
+        panel.game();
 
-            } else {
-                dialog.showMessageDialog(null, player2.getName() + message);
-            }
-
-            current = (current == 0 ? 1 : 0);
-
-            
-        }
+        // }
     }
 }
 
